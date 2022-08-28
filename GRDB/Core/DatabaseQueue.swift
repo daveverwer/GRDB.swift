@@ -4,7 +4,49 @@ import Foundation
 import UIKit
 #endif
 
-/// A DatabaseQueue serializes access to an SQLite database.
+/// A `DatabaseQueue` grants serialized accesses to an SQLite database.
+///
+/// For concurrent accesses (single writer, multiple readers), prefer using
+/// a ``DatabasePool``.
+///
+/// ## Topics
+///
+/// ### Initializers
+///
+/// - ``init(path:configuration:)``
+/// - ``init(configuration:)``
+///
+/// ### Database Information
+///
+/// - ``configuration``
+/// - ``path``
+///
+/// ### Read-Only Database Access
+///
+/// - ``read(_:)-227bn``
+/// - ``concurrentRead(_:)``
+/// - ``spawnConcurrentRead(_:)``
+/// - ``asyncRead(_:)``
+/// - ``unsafeRead(_:)-4j0ie``
+/// - ``unsafeReentrantRead(_:)``
+/// - ``asyncUnsafeRead(_:)``
+///
+/// ### Read-Write Database Access
+///
+/// - ``inDatabase(_:)``
+/// - ``inTransaction(_:_:)``
+/// - ``write(_:)-60xu8``
+/// - ``writeWithoutTransaction(_:)-1h18c``
+/// - ``barrierWriteWithoutTransaction(_:)-57agn``
+/// - ``asyncBarrierWriteWithoutTransaction(_:)``
+/// - ``asyncWrite(_:completion:)``
+/// - ``asyncWriteWithoutTransaction(_:)``
+/// - ``unsafeReentrantWrite(_:)``
+///
+/// ### Other Database Operations
+///
+/// - ``close()``
+/// - ``releaseMemory()``
 public final class DatabaseQueue: DatabaseWriter {
     private let writer: SerializedDatabase
     
