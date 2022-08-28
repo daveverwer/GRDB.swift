@@ -7,13 +7,13 @@ public protocol DatabaseCancellable {
 /// A type-erasing cancellable object that executes a provided closure
 /// when canceled.
 ///
-/// An AnyDatabaseCancellable instance automatically calls cancel()
+/// An ``AnyDatabaseCancellable`` instance automatically calls ``cancel()``
 ///  when deinitialized.
 public class AnyDatabaseCancellable: DatabaseCancellable {
     private var _cancel: (() -> Void)?
     
     /// Initializes the cancellable object with the given cancel-time closure.
-    public init(cancel: @escaping () -> Void) {
+    public init(_ cancel: @escaping () -> Void) {
         _cancel = cancel
     }
     

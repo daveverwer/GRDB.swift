@@ -672,18 +672,18 @@ extension Cursor where Element: StringProtocol {
 
 // MARK: Specialized Cursors
 
-/// A type-erased cursor of Element.
+/// A type-erased cursor.
 ///
-/// This cursor forwards its next() method to an arbitrary underlying cursor
-/// having the same Element type, hiding the specifics of the underlying
-/// cursor.
+/// An instance of `AnyCursor` forwards its operations to an underlying base
+/// cursor having the same `Element` type, hiding the specifics of the
+/// underlying cursor.
 public final class AnyCursor<Element>: Cursor {
     private let _next: () throws -> Element?
     private let _forEach: ((Element) throws -> Void) throws -> Void
     
     /// Creates a cursor that wraps a base cursor but whose type depends only on
     /// the base cursor’s element type
-    public init<C: Cursor>(_ base: C) where C.Element == Element {
+    public init(_ base: some Cursor<Element>) {
         _next = base.next
         _forEach = base.forEach
     }

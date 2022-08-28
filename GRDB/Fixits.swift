@@ -41,6 +41,12 @@ extension Database {
     public func afterNextTransactionCommit(_ closure: @escaping (Database) -> Void) { preconditionFailure() }
 }
 
+extension AnyDatabaseCancellable {
+    #warning("TODO: make unavailable")
+    @available(*, deprecated, renamed: "init(_:)")
+    public convenience init(cancel: @escaping () -> Void) { self.init(cancel) }
+}
+
 extension DatabaseCursor {
     @available(*, unavailable, message: "statement has been removed. You may use other cursor properties instead.")
     public var statement: Statement { preconditionFailure() }
