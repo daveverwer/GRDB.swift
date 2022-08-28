@@ -592,10 +592,33 @@ extension DatabaseReader {
     }
 }
 
-/// A type-erased DatabaseReader
+/// A type-erased ``DatabaseReader``.
 ///
-/// Instances of AnyDatabaseReader forward their methods to an arbitrary
-/// underlying database reader.
+/// An instance of `AnyDatabaseReader` forwards its operations to an underlying
+/// base database reader.
+///
+/// ## Topics
+///
+/// ### Initializers
+///
+/// - ``init(_:)``
+///
+/// ### Database Information
+///
+/// - ``configuration``
+///
+/// ### Read-Only Database Access
+///
+/// - ``read(_:)-8szku``
+/// - ``asyncRead(_:)``
+/// - ``unsafeRead(_:)-9rzlv``
+/// - ``unsafeReentrantRead(_:)``
+/// - ``asyncUnsafeRead(_:)``
+///
+/// ### Other Database Operations
+///
+/// - ``close()``
+/// - ``interrupt()``
 public final class AnyDatabaseReader: DatabaseReader {
     private let base: any DatabaseReader
     
@@ -644,7 +667,6 @@ public final class AnyDatabaseReader: DatabaseReader {
     
     // MARK: - Value Observation
     
-    /// :nodoc:
     public func _add<Reducer: ValueReducer>(
         observation: ValueObservation<Reducer>,
         scheduling scheduler: ValueObservationScheduler,
