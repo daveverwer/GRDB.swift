@@ -680,10 +680,45 @@ public class DatabaseFuture<Value> {
     }
 }
 
-/// A type-erased DatabaseWriter
+/// A type-erased ``DatabaseWriter``.
 ///
-/// Instances of AnyDatabaseWriter forward their methods to an arbitrary
-/// underlying database writer.
+/// An instance of `AnyDatabaseWriter` forwards its operations to an underlying
+/// base database writer.
+///
+/// ## Topics
+///
+/// ### Initializers
+///
+/// - ``init(_:)``
+///
+/// ### Database Information
+///
+/// - ``configuration``
+///
+/// ### Read-Only Database Access
+///
+/// - ``read(_:)-3gi88``
+/// - ``concurrentRead(_:)``
+/// - ``spawnConcurrentRead(_:)``
+/// - ``asyncRead(_:)``
+/// - ``unsafeRead(_:)-26n4t``
+/// - ``unsafeReentrantRead(_:)``
+/// - ``asyncUnsafeRead(_:)``
+///
+/// ### Read-Write Database Access
+///
+/// - ``write(_:)-4d7kw``
+/// - ``writeWithoutTransaction(_:)-49aiv``
+/// - ``barrierWriteWithoutTransaction(_:)-8sxth``
+/// - ``asyncBarrierWriteWithoutTransaction(_:)``
+/// - ``asyncWrite(_:completion:)``
+/// - ``asyncWriteWithoutTransaction(_:)``
+/// - ``unsafeReentrantWrite(_:)``
+///
+/// ### Other Database Operations
+///
+/// - ``close()``
+/// - ``interrupt()``
 public final class AnyDatabaseWriter: DatabaseWriter {
     private let base: any DatabaseWriter
     
@@ -734,7 +769,6 @@ public final class AnyDatabaseWriter: DatabaseWriter {
         base.concurrentRead(value)
     }
     
-    /// :nodoc:
     public func spawnConcurrentRead(_ value: @escaping (Result<Database, Error>) -> Void) {
         base.spawnConcurrentRead(value)
     }
