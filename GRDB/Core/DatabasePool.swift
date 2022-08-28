@@ -4,7 +4,52 @@ import Foundation
 import UIKit
 #endif
 
-/// A DatabasePool grants concurrent accesses to an SQLite database.
+/// A `DatabasePool` grants concurrent accesses (single writer, multiple
+/// readers) to an SQLite database thanks to the
+/// [WAL mode](https://sqlite.org/wal.html).
+///
+/// For non-concurrent (serialized) database accesses, use a ``DatabaseQueue``.
+///
+/// ## Topics
+///
+/// ### Initializers
+///
+/// - ``init(path:configuration:)``
+///
+/// ### Database Information
+///
+/// - ``configuration``
+/// - ``path``
+///
+/// ### Read-Only Database Access
+///
+/// - ``read(_:)-kdnn``
+/// - ``concurrentRead(_:)``
+/// - ``spawnConcurrentRead(_:)``
+/// - ``asyncRead(_:)``
+/// - ``asyncConcurrentRead(_:)``
+/// - ``unsafeRead(_:)-4r5zk``
+/// - ``unsafeReentrantRead(_:)``
+/// - ``asyncUnsafeRead(_:)``
+/// - ``makeSnapshot()``
+/// - ``invalidateReadOnlyConnections()``
+///
+/// ### Read-Write Database Access
+///
+/// - ``write(_:)-89rj6``
+/// - ``writeInTransaction(_:_:)``
+/// - ``writeWithoutTransaction(_:)-1j4hy``
+/// - ``barrierWriteWithoutTransaction(_:)-12iei``
+/// - ``asyncBarrierWriteWithoutTransaction(_:)``
+/// - ``asyncWrite(_:completion:)``
+/// - ``asyncWriteWithoutTransaction(_:)``
+/// - ``unsafeReentrantWrite(_:)``
+///
+/// ### Other Database Operations
+///
+/// - ``close()``
+/// - ``releaseMemory()``
+/// - ``releaseMemoryEventually()``
 public final class DatabasePool: DatabaseWriter {
     private let writer: SerializedDatabase
     
@@ -16,7 +61,6 @@ public final class DatabasePool: DatabaseWriter {
     
     // MARK: - Database Information
     
-    /// The database configuration
     public var configuration: Configuration {
         writer.configuration
     }
