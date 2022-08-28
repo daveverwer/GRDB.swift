@@ -8,10 +8,10 @@ typealias SQLiteValue = OpaquePointer
 
 let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_destructor_type.self)
 
-/// A Database connection.
+/// A connection to an SQLite database.
 ///
-/// You don't create a database directly. Instead, you use a DatabaseQueue, or
-/// a DatabasePool:
+/// You don't create a `Database` directly. Instead, you use a
+/// ``DatabaseQueue``, or a ``DatabasePool``:
 ///
 ///     let dbQueue = try DatabaseQueue(...)
 ///
@@ -19,6 +19,108 @@ let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_
 ///     try dbQueue.write { db in
 ///         try Player(...).insert(db)
 ///     }
+///
+/// An instance of the `Database` class can only be used from a database-access
+/// method such as ``DatabaseQueue/write(_:)-60xu8``,
+/// ``DatabasePool/read(_:)-kdnn``, or ``ValueObservation/tracking(_:)``. Using
+/// a `Database` in a different context is a programmer error.
+///
+/// ## Topics
+///
+/// ### Database Information
+///
+/// - ``changesCount``
+/// - ``configuration``
+/// - ``isInsideTransaction``
+/// - ``lastErrorCode``
+/// - ``lastErrorMessage``
+/// - ``lastInsertedRowID``
+/// - ``maximumStatementArgumentCount``
+/// - ``sqliteConnection``
+/// - ``totalChangesCount``
+///
+/// ### Executing Database Statements
+///
+/// - ``execute(sql:arguments:)``
+/// - ``execute(literal:)``
+///
+/// ### Transactions and Savepoints
+///
+/// - ``beginTransaction(_:)``
+/// - ``commit()``
+/// - ``rollback()``
+/// - ``inTransaction(_:_:)``
+/// - ``inSavepoint(_:)``
+///
+/// ### Prepared Statements
+///
+/// - ``allStatements(sql:arguments:)``
+/// - ``allStatements(literal:)``
+/// - ``cachedStatement(sql:)``
+/// - ``cachedStatement(literal:)``
+/// - ``makeStatement(sql:)``
+/// - ``makeStatement(literal:)``
+///
+/// ### Extending SQLite Functions and Collations
+///
+/// - ``add(collation:)``
+/// - ``add(function:)``
+/// - ``remove(collation:)``
+/// - ``remove(function:)``
+/// - ``reindex(collation:)-2hxil``
+/// - ``reindex(collation:)-171fj``
+///
+/// ### Modifying the Database Schema
+///
+/// - ``alter(table:body:)``
+/// - ``clearSchemaCache()``
+/// - ``create(index:on:columns:options:condition:)``
+/// - ``create(index:on:columns:unique:ifNotExists:condition:)``
+/// - ``create(table:options:body:)``
+/// - ``create(table:temporary:ifNotExists:withoutRowID:body:)``
+/// - ``create(virtualTable:ifNotExists:using:)``
+/// - ``create(virtualTable:ifNotExists:using:_:)``
+/// - ``drop(index:)``
+/// - ``drop(table:)``
+/// - ``dropFTS4SynchronizationTriggers(forTable:)``
+/// - ``dropFTS5SynchronizationTriggers(forTable:)``
+/// - ``rename(table:to:)``
+///
+/// ### Querying the Database Schema
+///
+/// - ``columns(in:)``
+/// - ``foreignKeys(on:)``
+/// - ``indexes(on:)``
+/// - ``primaryKey(_:)``
+/// - ``table(_:hasUniqueKey:)``
+/// - ``tableExists(_:)``
+/// - ``triggerExists(_:)``
+/// - ``viewExists(_:)``
+/// - ``isGRDBInternalTable(_:)``
+/// - ``isSQLiteInternalTable(_:)``
+///
+/// ### Database Observation
+///
+/// - ``add(transactionObserver:extent:)``
+/// - ``remove(transactionObserver:)``
+/// - ``afterNextTransaction(onCommit:onRollback:)``
+///
+/// ### Database Suspension
+///
+/// - ``resumeNotification``
+/// - ``suspendNotification``
+///
+/// ### Other Database Operations
+///
+/// - ``backup(to:pagesPerStep:progress:)``
+/// - ``checkForeignKeys()``
+/// - ``checkForeignKeys(in:)``
+/// - ``checkpoint(_:on:)``
+/// - ``foreignKeyViolations()``
+/// - ``foreignKeyViolations(in:)``
+/// - ``logError``
+/// - ``releaseMemory()``
+/// - ``trace(options:_:)``
 public final class Database: CustomStringConvertible, CustomDebugStringConvertible {
     // The Database class is not thread-safe. An instance should always be
     // used through a SerializedDatabase.
