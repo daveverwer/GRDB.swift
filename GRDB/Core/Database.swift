@@ -38,6 +38,7 @@ let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_
 /// - ``maximumStatementArgumentCount``
 /// - ``sqliteConnection``
 /// - ``totalChangesCount``
+/// - ``SQLiteConnection``
 ///
 /// ### Executing Database Statements
 ///
@@ -60,6 +61,9 @@ let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_
 /// - ``cachedStatement(literal:)``
 /// - ``makeStatement(sql:)``
 /// - ``makeStatement(literal:)``
+/// - ``SQLStatementCursor``
+/// - ``Statement``
+/// - ``StatementArguments``
 ///
 /// ### Extending SQLite Functions and Collations
 ///
@@ -69,6 +73,10 @@ let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_
 /// - ``remove(function:)``
 /// - ``reindex(collation:)-2hxil``
 /// - ``reindex(collation:)-171fj``
+/// - ``DatabaseAggregate``
+/// - ``DatabaseFunction``
+/// - ``DatabaseCollation``
+/// - ``CollationName``
 ///
 /// ### Modifying the Database Schema
 ///
@@ -85,6 +93,17 @@ let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_
 /// - ``dropFTS4SynchronizationTriggers(forTable:)``
 /// - ``dropFTS5SynchronizationTriggers(forTable:)``
 /// - ``rename(table:to:)``
+/// - ``IndexOptions``
+/// - ``TableOptions``
+/// - ``ColumnDefinition``
+/// - ``TableAlteration``
+/// - ``TableDefinition``
+/// - ``VirtualTableModule``
+/// - ``VirtualTableConfiguration``
+/// - ``FTS3TableDefinition``
+/// - ``FTS4TableDefinition``
+/// - ``FTS4ColumnDefinition``
+/// - ``FTS5TableDefinition``
 ///
 /// ### Querying the Database Schema
 ///
@@ -98,6 +117,11 @@ let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_
 /// - ``viewExists(_:)``
 /// - ``isGRDBInternalTable(_:)``
 /// - ``isSQLiteInternalTable(_:)``
+/// - ``ColumnInfo``
+/// - ``IndexInfo``
+/// - ``ForeignKeyInfo``
+/// - ``ForeignKeyViolation``
+/// - ``PrimaryKeyInfo``
 ///
 /// ### Database Observation
 ///
@@ -110,6 +134,11 @@ let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_
 /// - ``resumeNotification``
 /// - ``suspendNotification``
 ///
+/// ### Errors
+///
+/// - ``DatabaseError``
+/// - ``ResultCode``
+///
 /// ### Other Database Operations
 ///
 /// - ``backup(to:pagesPerStep:progress:)``
@@ -121,6 +150,7 @@ let SQLITE_TRANSIENT = unsafeBitCast(OpaquePointer(bitPattern: -1), to: sqlite3_
 /// - ``logError``
 /// - ``releaseMemory()``
 /// - ``trace(options:_:)``
+/// - ``DatabaseBackupProgress``
 public final class Database: CustomStringConvertible, CustomDebugStringConvertible {
     // The Database class is not thread-safe. An instance should always be
     // used through a SerializedDatabase.

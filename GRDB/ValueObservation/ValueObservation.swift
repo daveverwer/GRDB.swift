@@ -19,6 +19,25 @@ import Foundation
 ///         onChange: { (players: [Player]) in
 ///             print("Players have changed.")
 ///         })
+///
+/// ## Topics
+///
+/// ### Creating ValueObservation
+///
+/// - ``tracking(_:)``
+/// - ``trackingConstantRegion(_:)``
+/// - ``tracking(region:fetch:)``
+/// - ``tracking(regions:fetch:)``
+/// - ``ValueReducer``
+///
+/// ### Starting the Observation
+///
+/// - ``start(in:scheduling:onError:onChange:)``
+/// - ``values(in:scheduling:bufferingPolicy:)``
+/// - ``AsyncValueObservation``
+/// - ``DatabaseCancellable``
+/// - ``AnyDatabaseCancellable``
+/// - ``ValueObservationScheduler``
 public struct ValueObservation<Reducer: ValueReducer> {
     var events = ValueObservationEvents()
     

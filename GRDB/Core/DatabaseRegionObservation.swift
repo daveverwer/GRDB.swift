@@ -16,6 +16,17 @@ import Foundation
 ///         onChange: { (db: Database) in
 ///             print("A modification of the player table has just been committed.")
 ///         })
+///
+/// ## Topics
+///
+/// ### Starting the Observation
+///
+/// - ``start(in:onError:onChange:)``
+/// - ``DatabaseRegion``
+/// - ``DatabaseRegionConvertible``
+/// - ``AnyDatabaseRegionConvertible``
+/// - ``DatabaseCancellable``
+/// - ``AnyDatabaseCancellable``
 public struct DatabaseRegionObservation {
     /// A closure that is evaluated when the observation starts, and returns
     /// the observed database region.

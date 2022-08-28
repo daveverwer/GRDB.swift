@@ -237,6 +237,20 @@ extension Sequence {
 /// `forEach`, `joined`, `joined(separator:)`, `max`, `max(by:)`, `min`,
 /// `min(by:)`, `map`, `prefix`, `prefix(while:)`, `reduce`, `reduce(into:)`,
 /// `suffix`.
+///
+/// ## Topics
+///
+/// ### Other Cursors
+///
+/// - ``AnyCursor``
+/// - ``DropFirstCursor``
+/// - ``DropWhileCursor``
+/// - ``EnumeratedCursor``
+/// - ``FilterCursor``
+/// - ``FlattenCursor``
+/// - ``MapCursor``
+/// - ``PrefixCursor``
+/// - ``PrefixWhileCursor``
 public protocol Cursor<Element>: AnyObject {
     /// The type of element traversed by the cursor.
     associatedtype Element

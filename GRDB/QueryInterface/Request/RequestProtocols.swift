@@ -759,6 +759,19 @@ extension JoinableRequest where Self: SelectionRequest {
 // MARK: - DerivableRequest
 
 /// The base protocol for all requests that can be refined.
+///
+/// ## Topics
+///
+/// ### Other Request Protocols
+///
+/// - ``AggregatingRequest``
+/// - ``FilteredRequest``
+/// - ``AggregatingRequest``
+/// - ``SelectionRequest``
+/// - ``JoinableRequest``
+/// - ``OrderedRequest``
+/// - ``TableRequest``
+/// - ``TypedRequest``
 public protocol DerivableRequest<RowDecoder>: AggregatingRequest, FilteredRequest,
                                               JoinableRequest, OrderedRequest,
                                               SelectionRequest, TableRequest

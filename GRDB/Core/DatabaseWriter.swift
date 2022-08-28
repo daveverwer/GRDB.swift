@@ -19,6 +19,51 @@ import Dispatch
 /// connection to the database. Should you have to cope with external
 /// connections, protect yourself with transactions, and be ready to setup a
 /// [busy handler](https://www.sqlite.org/c3ref/busy_handler.html).
+///
+/// ## Topics
+///
+/// ### Database Writers
+///
+/// - ``AnyDatabaseWriter``
+/// - ``DatabasePool``
+/// - ``DatabaseQueue``
+///
+/// ### Read-Only Database Access
+///
+/// - ``concurrentRead(_:)``
+/// - ``spawnConcurrentRead(_:)``
+/// - ``DatabaseFuture``
+///
+/// ### Read-Write Database Access
+///
+/// - ``write(_:)-76inz``
+/// - ``write(_:)-88g7e``
+/// - ``write(_:)-226pa``
+/// - ``writeWithoutTransaction(_:)-4qh1w``
+/// - ``barrierWriteWithoutTransaction(_:)-280j1``
+/// - ``asyncWrite(_:completion:)-6v8qk``
+/// - ``asyncWrite(_:completion:)-2cfsz``
+/// - ``asyncWriteWithoutTransaction(_:)``
+/// - ``asyncBarrierWriteWithoutTransaction(_:)``
+/// - ``writePublisher(updates:)``
+/// - ``writePublisher(receiveOn:updates:)``
+/// - ``writePublisher(updates:thenRead:)``
+/// - ``writePublisher(receiveOn:updates:thenRead:)``
+/// - ``unsafeReentrantWrite(_:)``
+///
+/// ### Database Observation
+///
+/// - ``add(transactionObserver:extent:)``
+/// - ``remove(transactionObserver:)``
+///
+/// ### Other Database Operations
+///
+/// - ``erase()-w5n7``
+/// - ``erase()-7jv3d``
+/// - ``vacuum()-310uw``
+/// - ``vacuum()-9inj0``
+/// - ``vacuum(into:)-5lo41``
+/// - ``vacuum(into:)-9c5mb``
 public protocol DatabaseWriter: DatabaseReader {
     
     // MARK: - Writing in Database
