@@ -189,6 +189,20 @@ public final class Database: CustomStringConvertible, CustomDebugStringConvertib
     /// This cache is never cleared: we assume journal mode never changes.
     var journalModeCache: String?
     
+    class AttachedCache {
+        var schema: SchemaIdentifier
+        var statementCache: StatementCache
+        
+        init(schema: Database.SchemaIdentifier, statementCache: StatementCache) {
+            self.schema = schema
+            self.statementCache = statementCache
+        }
+    }
+    /// [**Experimental**](http://github.com/groue/GRDB.swift#what-are-experimental-features)
+    ///
+    /// The attached database that caches the results of requests.
+    var attachedCache: AttachedCache?
+    
     // MARK: - Private properties
     
     /// Support for ``Configuration/busyMode``.

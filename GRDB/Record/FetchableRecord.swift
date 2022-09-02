@@ -524,9 +524,9 @@ public final class RecordCursor<Record: FetchableRecord>: DatabaseCursor {
     private let row: Row // Instantiated once, reused for performance
     
     init(statement: Statement, arguments: StatementArguments? = nil, adapter: (any RowAdapter)? = nil) throws {
+        let statement = try statement.databaseCursorStatement(with: arguments)
         self._statement = statement
         row = try Row(statement: statement).adapted(with: adapter, layout: statement)
-        try statement.reset(withArguments: arguments)
     }
     
     deinit {

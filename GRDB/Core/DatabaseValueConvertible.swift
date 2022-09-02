@@ -112,6 +112,7 @@ public final class DatabaseValueCursor<Value: DatabaseValueConvertible>: Databas
     private let columnIndex: CInt
     
     init(statement: Statement, arguments: StatementArguments? = nil, adapter: (any RowAdapter)? = nil) throws {
+        let statement = try statement.databaseCursorStatement(with: arguments)
         self._statement = statement
         if let adapter = adapter {
             // adapter may redefine the index of the leftmost column
@@ -119,9 +120,6 @@ public final class DatabaseValueCursor<Value: DatabaseValueConvertible>: Databas
         } else {
             columnIndex = 0
         }
-        
-        // Assume cursor is created for immediate iteration: reset and set arguments
-        try statement.reset(withArguments: arguments)
     }
     
     deinit {
