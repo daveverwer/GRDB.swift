@@ -33,11 +33,11 @@ func generateCoreDataDatabaseIfMissing(at url: URL, fromModelAt modelURL: URL, i
     let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     moc.performAndWait {
         moc.persistentStoreCoordinator = psc
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
-        if try! moc.count(for: request) == insertedRowCount {
+        let requestForPage = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+        if try! moc.count(for: requestForPage) == insertedRowCount {
             return
         }
-        try! moc.execute(NSBatchDeleteRequest(fetchRequest: request))
+        try! moc.execute(NSBatchDeleteRequest(fetchRequest: requestForPage))
         
         for i in 0..<insertedRowCount {
             let item = NSEntityDescription.insertNewObject(forEntityName: "Item", into: moc)

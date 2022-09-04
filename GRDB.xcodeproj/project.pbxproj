@@ -117,6 +117,8 @@
 		564448831EF56B1B00DD2861 /* DatabaseAfterNextTransactionCommitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564448821EF56B1B00DD2861 /* DatabaseAfterNextTransactionCommitTests.swift */; };
 		564CD11B28C37C7A001DB866 /* SnapshotFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564CD11A28C37C7A001DB866 /* SnapshotFetch.swift */; };
 		564CD12028C49CE2001DB866 /* ValueSnapshotObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564CD11F28C49CE2001DB866 /* ValueSnapshotObserver.swift */; };
+		564CD13F28C4B12E001DB866 /* FetchedResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564CD13E28C4B12E001DB866 /* FetchedResults.swift */; };
+		564CD14528C4B541001DB866 /* FetchedResultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564CD14328C4B53E001DB866 /* FetchedResultsTests.swift */; };
 		564CE43121AA901800652B19 /* ValueConcurrentObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564CE43021AA901800652B19 /* ValueConcurrentObserver.swift */; };
 		564CE4E921B2E06F00652B19 /* ValueObservationMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564CE4E821B2E06F00652B19 /* ValueObservationMapTests.swift */; };
 		564CE59D21B7A8B500652B19 /* RemoveDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564CE59621B7A8B500652B19 /* RemoveDuplicates.swift */; };
@@ -514,6 +516,8 @@
 		564A50C61BFF4B7F00B3A3A2 /* DatabaseCollationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseCollationTests.swift; sourceTree = "<group>"; };
 		564CD11A28C37C7A001DB866 /* SnapshotFetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotFetch.swift; sourceTree = "<group>"; };
 		564CD11F28C49CE2001DB866 /* ValueSnapshotObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueSnapshotObserver.swift; sourceTree = "<group>"; };
+		564CD13E28C4B12E001DB866 /* FetchedResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResults.swift; sourceTree = "<group>"; };
+		564CD14328C4B53E001DB866 /* FetchedResultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsTests.swift; sourceTree = "<group>"; };
 		564CE43021AA901800652B19 /* ValueConcurrentObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueConcurrentObserver.swift; sourceTree = "<group>"; };
 		564CE4E821B2E06F00652B19 /* ValueObservationMapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueObservationMapTests.swift; sourceTree = "<group>"; };
 		564CE59621B7A8B500652B19 /* RemoveDuplicates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveDuplicates.swift; sourceTree = "<group>"; };
@@ -1002,6 +1006,7 @@
 				56012B542573EED000B4925B /* CommonTableExpressionTests.swift */,
 				56EA63C4209C7CE3009715B8 /* DerivableRequestTests.swift */,
 				56300B601C53C42C005A543B /* FetchableRecord+QueryInterfaceRequestTests.swift */,
+				564CD14328C4B53E001DB866 /* FetchedResultsTests.swift */,
 				56300B671C53D25E005A543B /* QueryInterfaceExpressionsTests.swift */,
 				5698AC021D9B9FCF0056AF8C /* QueryInterfaceExtensibilityTests.swift */,
 				563EF45221631E21007DAACD /* QueryInterfacePromiseTests.swift */,
@@ -1021,6 +1026,7 @@
 		56300B6D1C53F592005A543B /* QueryInterface */ = {
 			isa = PBXGroup;
 			children = (
+				564CD13E28C4B12E001DB866 /* FetchedResults.swift */,
 				56256ED825D1B316008C2BDD /* ForeignKey.swift */,
 				56CEB5101EAA324B00BFAF62 /* FTS3+QueryInterface.swift */,
 				56CEB5181EAA328900BFAF62 /* FTS5+QueryInterface.swift */,
@@ -1825,6 +1831,7 @@
 				56D4967C1D8130DB008276D7 /* CGFloatTests.swift in Sources */,
 				56D496631D81304E008276D7 /* FoundationURLTests.swift in Sources */,
 				563C67B324628BEA00E94EDC /* DatabasePoolTests.swift in Sources */,
+				564CD14528C4B541001DB866 /* FetchedResultsTests.swift in Sources */,
 				56D496B71D81344B008276D7 /* RecordUniqueIndexTests.swift in Sources */,
 				5653EAE220944B4F00F46237 /* AssociationHasOneSQLTests.swift in Sources */,
 				56D496671D813086008276D7 /* Record+QueryInterfaceRequestTests.swift in Sources */,
@@ -2143,6 +2150,7 @@
 				56717271261C68E900423B6F /* CaseInsensitiveIdentifier.swift in Sources */,
 				C96C0F2B2084A442006B2981 /* SQLiteDateParser.swift in Sources */,
 				56781B0B243F86E600650A83 /* Refinable.swift in Sources */,
+				564CD13F28C4B12E001DB866 /* FetchedResults.swift in Sources */,
 				56A238871B9C75030082EB20 /* Row.swift in Sources */,
 				5653EB2120944C7C00F46237 /* HasOneAssociation.swift in Sources */,
 				5605F1731C672E4000235C62 /* StandardLibrary.swift in Sources */,

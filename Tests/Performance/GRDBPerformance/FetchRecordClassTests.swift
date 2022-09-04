@@ -72,8 +72,8 @@ class FetchRecordClassTests: XCTestCase {
         moc.persistentStoreCoordinator = psc
         
         measure {
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
-            let items = try! moc.fetch(request)
+            let requestForPage = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+            let items = try! moc.fetch(requestForPage)
             for item in items {
                 let item = item as AnyObject
                 _ = item.value(forKey: "i0")
