@@ -37,3 +37,10 @@ extension ValueReducers.Map: _DatabaseValueReducer where Base: _DatabaseValueRed
         try base._fetch(db)
     }
 }
+
+extension ValueReducers.Map: _SnapshotValueReducer where Base: _SnapshotValueReducer {
+    /// :nodoc:
+    public func _fetch(_ snapshot: DatabaseSnapshot) throws -> Base.Fetched {
+        try base._fetch(snapshot)
+    }
+}

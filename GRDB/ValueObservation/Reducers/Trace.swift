@@ -23,3 +23,11 @@ extension ValueReducers.Trace: _DatabaseValueReducer where Base: _DatabaseValueR
         return try base._fetch(db)
     }
 }
+
+extension ValueReducers.Trace: _SnapshotValueReducer where Base: _SnapshotValueReducer {
+    /// :nodoc:
+    public func _fetch(_ snapshot: DatabaseSnapshot) throws -> Base.Fetched {
+        willFetch()
+        return try base._fetch(snapshot)
+    }
+}
